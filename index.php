@@ -20,7 +20,7 @@ if (!$dbselect) {
 echo "MYSQL_SELECT_DB Success <br>";
 
 /* COMMENT: Setup the query to SELECT * from dumps */
-$result = mysql_query("SELECT * from dumps LIMIT 5");
+$result = mysql_query("SELECT * from dumps ORDER BY desc LIMIT 5");
 if (!result) {
     die("Database select failed: " . mysql_error());
 }
