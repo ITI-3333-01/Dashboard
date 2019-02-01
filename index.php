@@ -20,7 +20,7 @@ if (!$dbselect) {
 echo "MYSQL_SELECT_DB Success <br>";
 
 /* COMMENT: Setup the query to SELECT * from dumps */
-$result = mysql_query("SELECT * FROM dumps WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY total DESC;");
+$result = mysql_query("SELECT * FROM dumps WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY total DESC LIMIT 5;");
 if (!result) {
     die("Database select failed: " . mysql_error());
 }
