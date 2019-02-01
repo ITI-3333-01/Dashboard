@@ -1,5 +1,4 @@
 <?php
-echo "Hello World!<br>";
 include('header.html');
 $servername= "localhost";
 $username="flare";
