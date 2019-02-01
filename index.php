@@ -1,5 +1,6 @@
 <?php
 echo "Hello World!<br>";
+include('header.html');
 $servername= "localhost";
 $username="flare";
 $password="Flare-3333";
@@ -37,4 +38,5 @@ while ($row = mysql_fetch_assoc($result)) {
 mysql_free_result($result);
 mysql_close($dbconn);
 echo "MYSQL_CLOSE Success: $rowcnt <br>";
+include('footer.html');
 ?>
