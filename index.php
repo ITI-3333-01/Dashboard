@@ -37,5 +37,11 @@ while ($row = mysql_fetch_assoc($result)) {
 mysql_free_result($result);
 mysql_close($dbconn);
 echo "MYSQL_CLOSE Success: $rowcnt <br>";
+/*include the library*/
+include "libchart/libchart/classes/libchart.php";
+/*new pie chart instance*/
+$chart = new PieChart( 500, 300 );
+/*data set instance*/
+$dataSet = new XYDataSet();
 include('footer.html');
 ?>
