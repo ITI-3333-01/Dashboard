@@ -34,7 +34,7 @@ while ($row = mysql_fetch_assoc($result)) {
 }
 
 /*Pie CHART*/
-
+/*
 //include the library
     include "libchart/libchart/classes/libchart.php";
  
@@ -81,7 +81,7 @@ while ($row = mysql_fetch_assoc($result)) {
     }else{
         echo "No programming languages found in the database.";
     }
-
+*/
 /*footer code*/
 include('footer.html');
 ?>
