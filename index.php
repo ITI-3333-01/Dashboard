@@ -33,15 +33,55 @@ while ($row = mysql_fetch_assoc($result)) {
     $rowcnt++;
 }
 
-/* COMMENT: Clean-up and close */
-mysql_free_result($result);
-mysql_close($dbconn);
-echo "MYSQL_CLOSE Success: $rowcnt <br>";
-/*include the library*/
-include "libchart/libchart/classes/libchart.php";
-/*new pie chart instance*/
-$chart = new PieChart( 500, 300 );
-/*data set instance*/
-$dataSet = new XYDataSet();
+/*Pie CHART*/
+
+//include the library
+    include "libchart/libchart/classes/libchart.php";
+ 
+    //new pie chart instance
+    $chart = new PieChart( 500, 300 );
+ 
+    //data set instance
+    $dataSet = new XYDataSet();
+    
+    //actual data
+    //get data from the database
+    
+    //include database connection
+    include 'db_connect.php';
+ 
+    //query all records from the database
+    $query = "select * from dumps";
+ 
+    //execute the query
+    $result = $mysqli->query( $query );
+ 
+    //get number of rows returned
+    $num_results = $result->num_rows;
+ 
+    if( $num_results > 0){
+    
+        while( $row = $result->fetch_assoc() ){
+            extract($row);
+            $dataSet->addPoint(new Point("{$error} {$total})", $total));
+        }
+    
+        //finalize dataset
+        $chart->setDataSet($dataSet);
+ 
+        //set chart title
+        $chart->setTitle("Pie Chart test");
+        
+        //render as an image and store under "generated" folder
+        $chart->render("testpie/1.png");
+    
+        //pull the generated chart where it was stored
+        echo "<img alt='Pie chart'  src='testpie/1.png' style='border: 1px solid gray;'/>";
+    
+    }else{
+        echo "No programming languages found in the database.";
+    }
+
+/*footer code*/
 include('footer.html');
 ?>
