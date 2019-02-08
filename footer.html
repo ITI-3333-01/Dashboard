@@ -1,3 +1,8 @@
+<?php  
+$dbconn = mysql_connect($servername, $username, $password);
+ $query = "SELECT time, total as number FROM dumps LIMIT 5";  
+ $result = mysqli_query($connect, $query);  
+ ?>  
 <!DOCTYPE html>
 <html>
 <head>
