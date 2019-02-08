@@ -33,7 +33,7 @@ while ($row = mysql_fetch_assoc($result)) {
     $rowcnt++;
 }
 
-/*
+
 // Performing SQL query
 $query =
 'SELECT ip_address, ip_count FROM `dump_info` order by ip_count desc group by ip_address limit 5';
@@ -54,7 +54,7 @@ echo "</infographic-piechart>\n";
 // Free resultset
 mysql_free_result($result);
 
-*/
+
 
 
 /*Pie CHART*/
