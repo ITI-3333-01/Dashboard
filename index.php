@@ -33,15 +33,6 @@ while ($row = mysql_fetch_assoc($result)) {
     $rowcnt++;
 }
 
-/*PIE CHART TRY*/
-<?php
-// Connecting, selecting database
-$link = mysql_connect('mysql_host', 'mysql_user', 'mysql_password')
-    or die('Could not connect: ' . mysql_error());
-
-
-
-mysql_select_db('my_database') or die('Could not select database');
 
 // Performing SQL query
 $query =
@@ -62,11 +53,6 @@ echo "</infographic-piechart>\n";
 
 // Free resultset
 mysql_free_result($result);
-
-// Closing connection
-mysql_close($link);
-?>
-
 
 
 /*Pie CHART*/
