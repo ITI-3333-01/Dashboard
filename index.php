@@ -52,7 +52,8 @@ while ($row = mysql_fetch_assoc($result)) {
  $exec = mysqli_query($con,$query);
  //while($row = mysqli_fetch_array($exec)){
  $row = mysqli_fetch_array($exec);
- echo "['".$row["time"]."', ".$row["total"]."],";
+ echo $row;
+            //echo "['".$row["time"]."', ".$row["total"]."],";
 // }
  ?>
         ]);
