@@ -52,16 +52,14 @@ $exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 5;")
                if (!$exec) {
     die("Database query failed: " . mysql_error());
 }
- //while($row = mysqli_fetch_array($exec)){
- $row = mysql_fetch_array($exec);
+ 
+/* $row = mysql_fetch_array($exec);
              if (!$row) {
     die("Database fetch failed: " . mysql_error());
-}
+}*/
+  while($row = mysql_fetch_array($exec)){
   echo "['".$row["time"]."', ".$row["total"]."],";
-            echo $row;
- echo "Hello World";
-
-// }
+  }
  ?>
         ]);
 
