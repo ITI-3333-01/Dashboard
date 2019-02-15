@@ -58,7 +58,7 @@ mysql_free_result($result);
 
 
 /*Pie CHART*/
-/*
+
 //include the library
     include "libchart/libchart/classes/libchart.php";
  
@@ -105,7 +105,7 @@ mysql_free_result($result);
     }else{
         echo "Error";
     }
-*/
+
 /*footer code*/
 include('footer.html');
 ?>
