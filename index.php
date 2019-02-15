@@ -32,6 +32,48 @@ while ($row = mysql_fetch_assoc($result)) {
 mysql_free_result($result);
 mysql_close($dbconn);
 echo "MYSQL_CLOSE Success: $rowcnt <br>";
+?>
+
+
+
+
+
+/*PIE CHART WORK BY MEHDI*/
+<html>
+    <head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+        <?php 
+ $query = "SELECT total, time FROM dumps GROUP BY time LIMIT 5";
+ $exec = mysqli_query($con,$query);
+ while($row = mysqli_fetch_array($exec)){
+ echo "['".$row['time']."',".$row['total']."],";
+ }
+ ?>
+        ]);
+
+        var options = {
+          title: 'Total packets by time'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+
+<?php 
 /*footer code*/
 include('footer.html');
 ?>
