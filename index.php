@@ -50,9 +50,9 @@ while ($row = mysql_fetch_assoc($result)) {
         <?php 
  $query = "SELECT total FROM dumps ORDER BY DESC LIMIT 5";
  $exec = mysqli_query($con,$query);
- while($row = mysqli_fetch_array($exec)){
+ //while($row = mysqli_fetch_array($exec)){
  echo "['".$row["time"]."', ".$row["total"]."],";
- }
+// }
  ?>
         ]);
 
