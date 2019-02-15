@@ -50,11 +50,14 @@ while ($row = mysql_fetch_assoc($result)) {
         <?php 
  $query = "SELECT total,time FROM dumps ORDER BY total DESC LIMIT 5";
  $exec = mysql_query($con,$query);
-               if (!query) {
+               if (!$exec) {
     die("Database select failed: " . mysql_error());
 }
  //while($row = mysqli_fetch_array($exec)){
  $row = mysql_fetch_array($exec);
+             if (!$row) {
+    die("Database select failed: " . mysql_error());
+}
  echo $row;
  echo "Hello World";
             //echo "['".$row["time"]."', ".$row["total"]."],";
