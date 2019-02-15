@@ -28,37 +28,24 @@ while ($row = mysql_fetch_assoc($result)) {
     echo $row["total"]. "<br>";
     $rowcnt++;
 }
-/*PIE CHART TRY*/
-<?php
-// Connecting, selecting database
-$link = mysql_connect('mysql_host', 'mysql_user', 'mysql_password')
-    or die('Could not connect: ' . mysql_error());
-mysql_select_db('my_database') or die('Could not select database');
 // Performing SQL query
 $query =
-'SELECT ip_address, ip_count FROM `dump_info` order by ip_count desc group by ip_address limit 5';
+'SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY total DESC LIMIT 5';
 $result = mysql_query($query) or die('Query failed: ' . mysql_error());
 // Printing results inside an HTML infographic tag
 echo "<infographic-piechart  width='300'  height='300'>\n";
 echo "<infographic-data>\n";
 while ($row = mysql_fetch_array($result)) {
     echo "<infographic-pieslice value='" .
-         $row['ip_count'] . "'>" .
-         $row['ip_address'] .
+         $row['total'] . "'>" .
+         $row['time'] .
          "</infographic-pieslice>\n";
 }
 echo "<infographic-data>\n";
 echo "</infographic-piechart>\n";
 // Free resultset
 mysql_free_result($result);
-// Closing connection
-mysql_close($link);
-?>
-
-
-
 /*Pie CHART*/
-/*
 //include the library
     include "libchart/libchart/classes/libchart.php";
  
@@ -105,7 +92,6 @@ mysql_close($link);
     }else{
         echo "Error";
     }
-*/
 /*footer code*/
 include('footer.html');
 ?>
