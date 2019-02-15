@@ -28,6 +28,9 @@ while ($row = mysql_fetch_assoc($result)) {
     echo $row["total"]. "<br>";
     $rowcnt++;
 }
+mysql_free_result($result);
+mysql_close($dbconn);
+echo "MYSQL_CLOSE Success: $rowcnt <br>";
 /*footer code*/
 include('footer.html');
 ?>
