@@ -29,7 +29,7 @@ while ($row = mysql_fetch_assoc($result)) {
     echo $row["total"]. "<br>";
     $rowcnt++;
 }
-
+?>
 
 
 
@@ -69,11 +69,11 @@ while ($row = mysql_fetch_assoc($result)) {
   <body>
     <div id="piechart" style="width: 900px; height: 500px;"></div>
   </body>
-mysql_free_result($result);
+<?php
+    mysql_free_result($result);
 mysql_close($dbconn);
 echo "MYSQL_CLOSE Success: $rowcnt <br>";
-?>
-<?php 
+ 
 /*footer code*/
 include('footer.html');
 ?>
