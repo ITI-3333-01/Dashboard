@@ -54,7 +54,7 @@ echo "MYSQL_CLOSE Success: $rowcnt <br>";
  $query = "SELECT total FROM dumps ORDER BY DESC LIMIT 5";
  $exec = mysqli_query($con,$query);
  while($row = mysqli_fetch_array($exec)){
- echo "['".$row['time']."',".$row['total']."],";
+ echo "['".$row["time"]."', ".$row["total"]."],";
  }
  ?>
         ]);
