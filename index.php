@@ -47,8 +47,8 @@ $exec = mysql_query("SELECT total,time FROM dumps  ORDER BY total DESC LIMIT 6;"
     </script>
   </head>
   <body>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
-      <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div id="piechart" style="width: 900px; height: 500px;">Hello<br></div>
+      <div id="piechart" style="width: 900px; height: 500px;">World</div>
   </body>
 <?php
     mysql_free_result($result);
