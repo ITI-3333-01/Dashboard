@@ -48,7 +48,7 @@ while ($row = mysql_fetch_assoc($result)) {
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
-$exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 5;"); 
+$exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 6;"); 
                if (!$exec) {
     die("Database query failed: " . mysql_error());
 }
