@@ -48,11 +48,16 @@ while ($row = mysql_fetch_assoc($result)) {
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
- $query = "SELECT time, total FROM dumps ORDER BY DESC LIMIT 5";
- $exec = mysqli_query($con,$query);
+ $query = "SELECT total FROM dumps ORDER BY DESC LIMIT 5";
+    while ($row = mysql_fetch_assoc($result)) {
+    echo $row["total"]. "<br>";
+    $rowcnt++;
+}
+ $exec = mysql_query($con,$query);
  //while($row = mysqli_fetch_array($exec)){
- $row = mysqli_fetch_array($exec);
+ $row = mysql_fetch_array($exec);
  echo $row;
+ echo "Hello World";
             //echo "['".$row["time"]."', ".$row["total"]."],";
 // }
  ?>
