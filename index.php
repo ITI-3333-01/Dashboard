@@ -48,7 +48,7 @@ while ($row = mysql_fetch_assoc($result)) {
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
- $query = "SELECT total FROM dumps ORDER BY DESC LIMIT 5";
+ $query = "SELECT time, total FROM dumps ORDER BY DESC LIMIT 5";
  $exec = mysqli_query($con,$query);
  //while($row = mysqli_fetch_array($exec)){
  echo "['".$row["time"]."', ".$row["total"]."],";
