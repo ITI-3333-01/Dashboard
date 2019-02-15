@@ -23,7 +23,7 @@ if (!$dbselect) {
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+      function drawChart1() {
 
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
@@ -39,12 +39,13 @@ $exec = mysql_query("SELECT total,time FROM dumps  ORDER BY total DESC LIMIT 6;"
  ?>
         ]);
         var options = {
-          title: 'Total packets by time'
+          title: 'Total packets by time', width:400,
+                       height:300
         };
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
         chart.draw(data, options);
       }
-        function drawChart() {
+        function drawChart2() {
 
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
@@ -60,15 +61,21 @@ $exec = mysql_query("SELECT total,time FROM dumps  ORDER BY total DESC LIMIT 6;"
  ?>
         ]);
         var options = {
-          title: 'Total packets by time'
+          title: 'Total packets by time', width:400,
+                       height:300
         };
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
         chart.draw(data, options);
       }
     </script>
   </head>
   <body>
-    <div id="piechart" style="width: 900px; height: 500px;">Hello<br></div>     
+    <table class="columns">
+      <tr>
+        <td><div id="piechart1" style="border: 1px solid #ccc"></div></td>
+        <td><div id="piechart2" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
   </body>
 <?php
     mysql_free_result($result);
