@@ -59,8 +59,6 @@ $exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 6;")
 <?php
     mysql_free_result($result);
 mysql_close($dbconn);
-echo "MYSQL_CLOSE Success: $rowcnt <br>";
- 
 /*footer code*/
 include('footer.html');
 ?>
