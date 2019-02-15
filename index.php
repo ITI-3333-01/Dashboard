@@ -57,9 +57,10 @@ $exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 5;")
              if (!$row) {
     die("Database fetch failed: " . mysql_error());
 }
- echo $row;
+  echo "['".$row["time"]."', ".$row["total"]."],";
+            echo $row;
  echo "Hello World";
-            //echo "['".$row["time"]."', ".$row["total"]."],";
+
 // }
  ?>
         ]);
