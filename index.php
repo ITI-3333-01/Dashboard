@@ -61,7 +61,7 @@ $exec = mysql_query("SELECT total,time FROM dumps  ORDER BY total DESC LIMIT 6;"
  ?>
         ]);
         var options = {
-          title: 'Total packets by time', width:400,
+          title: 'Total packets by time', width:400, 
                        height:300
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
