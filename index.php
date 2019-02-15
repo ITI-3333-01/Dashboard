@@ -49,9 +49,9 @@ echo "MYSQL_CLOSE Success: $rowcnt <br>";
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
+          ['Domain', 'Total Packets'],
         <?php 
- $query = "SELECT total FROM dumps GROUP BY time LIMIT 5";
+ $query = "SELECT total FROM dumps ORDER BY DESC LIMIT 5";
  $exec = mysqli_query($con,$query);
  while($row = mysqli_fetch_array($exec)){
  echo "['".$row['time']."',".$row['total']."],";
