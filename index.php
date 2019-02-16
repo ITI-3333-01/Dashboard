@@ -22,7 +22,7 @@ if (!$dbselect) {
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
+      function drawPieChartOne() {
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
@@ -42,16 +42,51 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
  ?>
         ]);
         var options = {
-          title: 'Total packets by time'
+          title: 'Total packets by time',
+            width:400,
+                       height:300
         };
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechartone'));
         chart.draw(data, options);
       }
+        
+        //Second pie chart
+ function drawPieChartTwo() {
+        var data = google.visualization.arrayToDataTable([
+          ['Domain', 'Total Packets'],
+        <?php 
+$exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY total DESC LIMIT 6;"); 
+            
+               if (!$exec) {
+    die("Database query failed: " . mysql_error());
+}
+ 
+/* $row = mysql_fetch_array($exec);
+             if (!$row) {
+    die("Database fetch failed: " . mysql_error());
+}*/
+  while($row = mysql_fetch_array($exec)){
+  echo "['".$row["time"]."', ".$row["total"]."],";
+  }
+ ?>
+        ]);
+        var options = {
+          title: 'Total packets by time two',
+            width:400,
+                       height:300
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piecharttwo'));
+        chart.draw(data, options);
+      }      
     </script>
   </head>
   <body>
-    <div id="piechart" style="width: 900px; height: 500px; clear:both"></div>
-      <div id="piechart" style="width: 900px; height: 500px; clear:both"></div>
+  <table class="columns">
+      <tr>
+        <td><div id="piechartone" style="border: 1px solid #ccc"></div></td>
+        <td><div id="piecharttwo" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
   </body>
 <?php
     mysql_free_result($result);
