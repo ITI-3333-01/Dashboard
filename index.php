@@ -22,7 +22,7 @@ if (!$dbselect) {
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
-      function drawPieChartOne() {
+      function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
@@ -42,11 +42,9 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
  ?>
         ]);
         var options = {
-          title: 'Total packets by time',
-            width:400,
-                       height:300
+          title: 'Total packets by time'
         };
-        var chart = new google.visualization.PieChart(document.getElementById('piechartone'));
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);
       }
         
@@ -83,7 +81,7 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
   <body>
   <table class="columns">
       <tr>
-        <td><div id="piechartone" style="border: 1px solid #ccc"></div></td>
+        <td><div id="piechart" style="border: 1px solid #ccc"></div></td>
         <td><div id="piecharttwo" style="border: 1px solid #ccc"></div></td>
       </tr>
     </table>
