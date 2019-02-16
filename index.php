@@ -41,11 +41,43 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
   }
  ?>
         ]);
-          var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
+          var piechart_options = {title:'Total packets by time',
                        width:400,
                        height:300};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
         piechart.draw(data, piechart_options);
+        /*var options = {
+          title: 'Total packets by time'
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);*/
+      }
+        
+        //Second pie chart
+
+    </script>
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Domain', 'Total Packets'],
+        <?php 
+$exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY total DESC LIMIT 6;"); 
+            
+               if (!$exec) {
+    die("Database query failed: " . mysql_error());
+}
+ 
+/* $row = mysql_fetch_array($exec);
+             if (!$row) {
+    die("Database fetch failed: " . mysql_error());
+}*/
+  while($row = mysql_fetch_array($exec)){
+  echo "['".$row["time"]."', ".$row["total"]."],";
+  }
+ ?>
+        ]);
         var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
                        width:400,
                        height:300};
@@ -57,10 +89,7 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);*/
       }
-        
-        //Second pie chart
-
-    </script>
+                </script>
   </head>
   <body>
   <table class="columns">
