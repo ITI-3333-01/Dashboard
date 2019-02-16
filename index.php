@@ -41,7 +41,7 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
   }
  ?>
         ]);
-          var piechart_options = {title:'Total packets by time',
+          var piechart_options = {title:'Total packets by time (Last Hour)',
                        width:700,
                        height:500};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
@@ -78,7 +78,7 @@ $exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 6;")
   }
  ?>
         ]);
-        var piechart_options = {title:'Total packets (all time)',
+        var piechart_options = {title:'Total packets (All Time)',
                        width:700,
                        height:500};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
