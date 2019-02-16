@@ -41,46 +41,32 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
   }
  ?>
         ]);
-        var options = {
+          var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
+                       width:400,
+                       height:300};
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+        piechart.draw(data, piechart_options);
+        var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
+                       width:400,
+                       height:300};
+        var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
+        piechart.draw(data, piechart_options);  
+        /*var options = {
           title: 'Total packets by time'
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
+        chart.draw(data, options);*/
       }
         
         //Second pie chart
- function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Domain', 'Total Packets'],
-        <?php 
-$exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY total DESC LIMIT 6;"); 
-            
-               if (!$exec) {
-    die("Database query failed: " . mysql_error());
-}
- 
-/* $row = mysql_fetch_array($exec);
-             if (!$row) {
-    die("Database fetch failed: " . mysql_error());
-}*/
-  while($row = mysql_fetch_array($exec)){
-  echo "['".$row["time"]."', ".$row["total"]."],";
-  }
- ?>
-        ]);
-        var options = {
-          title: 'Total packets by time'
-        };
-        var chart = new google.visualization.PieChart(document.getElementById('piecharto'));
-        chart.draw(data, options);
-      }
+
     </script>
   </head>
   <body>
   <table class="columns">
       <tr>
-        <td><div id="piechart" style="border: 1px solid #ccc"></div></td>
-        <td><div id="piecharto" style="border: 1px solid #ccc"></div></td>
+        <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="piechart_two_div" style="border: 1px solid #ccc"></div></td>
       </tr>
     </table>
   </body>
