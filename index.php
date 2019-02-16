@@ -69,13 +69,8 @@ $exec = mysql_query("SELECT total,time FROM dumps  ORDER BY total DESC LIMIT 6;"
       }
     </script>
   </head>
-  <body>
-    <table class="columns">
-      <tr>
-        <td><div id="piechart1" style="border: 1px solid #ccc"></div></td>
-        <td><div id="piechart2" style="border: 1px solid #ccc"></div></td>
-      </tr>
-    </table>
+ <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
   </body>
 <?php
     mysql_free_result($result);
