@@ -42,8 +42,8 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
  ?>
         ]);
           var piechart_options = {title:'Total packets by time',
-                       width:400,
-                       height:300};
+                       width:700,
+                       height:500};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
         piechart.draw(data, piechart_options);
         /*var options = {
@@ -63,7 +63,7 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
-$exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY total DESC LIMIT 6;"); 
+$exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 6;"); 
             
                if (!$exec) {
     die("Database query failed: " . mysql_error());
@@ -78,16 +78,12 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
   }
  ?>
         ]);
-        var piechart_options = {title:'Pie Chart: How Much Pizza I Ate Last Night',
-                       width:400,
-                       height:300};
+        var piechart_options = {title:'Total packets (all time)',
+                       width:700,
+                       height:500};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
         piechart.draw(data, piechart_options);  
-        /*var options = {
-          title: 'Total packets by time'
-        };
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);*/
+        
       }
                 </script>
   </head>
