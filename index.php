@@ -49,7 +49,7 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
       }
         
         //Second pie chart
- function drawPieChartTwo() {
+ function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
@@ -69,20 +69,18 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
  ?>
         ]);
         var options = {
-          title: 'Total packets by time two',
-            width:400,
-                       height:300
+          title: 'Total packets by time'
         };
-        var chart = new google.visualization.PieChart(document.getElementById('piecharttwo'));
+        var chart = new google.visualization.PieChart(document.getElementById('piecharto'));
         chart.draw(data, options);
-      }      
+      }
     </script>
   </head>
   <body>
   <table class="columns">
       <tr>
         <td><div id="piechart" style="border: 1px solid #ccc"></div></td>
-        <td><div id="piecharttwo" style="border: 1px solid #ccc"></div></td>
+        <td><div id="piecharto" style="border: 1px solid #ccc"></div></td>
       </tr>
     </table>
   </body>
