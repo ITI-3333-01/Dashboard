@@ -66,11 +66,11 @@ if (!$dbselect) {
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
-$exec = mysql_query("SELECT ip_count,dns FROM dump_info ORDER BY ip_count DESC LIMIT 6;"); 
+$exec = mysql_query("SELECT ip_count,dns FROM dump_info WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY ip_count DESC LIMIT 6;"); 
             
                if (!$exec) {
     die("Database query failed: " . mysql_error());
-}
+} 
  
 /* $row = mysql_fetch_array($exec);
              if (!$row) {
