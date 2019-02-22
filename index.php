@@ -1,4 +1,6 @@
 <?php
+$page = $_SERVER['PHP_SELF'];
+$sec = "10";
 include('header.html');
 $servername= "localhost";
 $username="flare";
