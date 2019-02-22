@@ -65,7 +65,7 @@ $exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE()
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
-$exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 6;"); 
+$exec = mysql_query("SELECT ip_count,dns FROM dump_info ORDER BY ip_count DESC LIMIT 6;"); 
             
                if (!$exec) {
     die("Database query failed: " . mysql_error());
@@ -76,7 +76,7 @@ $exec = mysql_query("SELECT total,time FROM dumps ORDER BY total DESC LIMIT 6;")
     die("Database fetch failed: " . mysql_error());
 }*/
   while($row = mysql_fetch_array($exec)){
-  echo "['".$row["time"]."', ".$row["total"]."],";
+  echo "['".$row["dns"]."', ".$row["ip_count"]."],";
   }
  ?>
         ]);
