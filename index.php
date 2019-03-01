@@ -29,7 +29,7 @@ if (!$dbselect) {
           ['Domain', 'Total Packets'],
         <?php 
             /*$exec = mysql_query("SELECT ip_count,dns WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) FROM dump_info ORDER BY ip_count DESC LIMIT 6;")
-*/$exec = mysql_query("SELECT total,time FROM dumps WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY total DESC LIMIT 6;");
+*/$exec = mysql_query("SELECT ip_count,dns FROM dump_info WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY ip_count DESC LIMIT 6;");
             
                if (!$exec) {
     die("Database query failed: " . mysql_error());
@@ -40,7 +40,7 @@ if (!$dbselect) {
     die("Database fetch failed: " . mysql_error());
 }*/
   while($row = mysql_fetch_array($exec)){
-    echo "['".$row["time"]."', ".$row["total"]."],";
+    echo "['".$row["dns"]."', ".$row["ip_count"]."],";
   }
  ?>
         ]);
@@ -65,7 +65,7 @@ if (!$dbselect) {
         var data = google.visualization.arrayToDataTable([
           ['Domain', 'Total Packets'],
         <?php 
-$exec = mysql_query("SELECT ip_count,dns FROM dump_info WHERE time >DATE_SUB(CURDATE(), INTERVAL 1 hour) ORDER BY ip_count DESC LIMIT 6;"); 
+$exec = mysql_query("SELECT ip_count,dns FROM dump_info ORDER BY ip_count DESC LIMIT 6;"); 
             
                if (!$exec) {
     die("Database query failed: " . mysql_error());
