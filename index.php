@@ -49,8 +49,8 @@ if (!$dbselect) {
                        height:500};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
         piechart.draw(data, piechart_options);
-        var options = {
-          width: 100px
+        /*var options = {
+          title: 'Total packets by time'
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);*/
@@ -81,7 +81,7 @@ $exec = mysql_query("SELECT ip_count,dns FROM dump_info ORDER BY ip_count DESC L
  ?>
         ]);
         var piechart_options = {title:'Total packets (All Time)',
-                       width:100px,
+                       width:700,
                        height:500};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
         piechart.draw(data, piechart_options);  
