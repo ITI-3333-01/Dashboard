@@ -81,7 +81,7 @@ $exec = mysql_query("SELECT ip_count,dns FROM dump_info ORDER BY ip_count DESC L
  ?>
         ]);
         var piechart_options = {title:'Total packets (All Time)',
-                       width:700,
+                       width:50%,
                        height:500};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
         piechart.draw(data, piechart_options);  
