@@ -49,8 +49,8 @@ if (!$dbselect) {
                        height:500};
         var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
         piechart.draw(data, piechart_options);
-        /*var options = {
-          title: 'Total packets by time'
+        var options = {
+          width: 50%
         };
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
         chart.draw(data, options);*/
