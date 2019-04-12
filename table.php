@@ -18,32 +18,20 @@
   }
 ?>
 
-<html>
-<head>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
-</script>
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Domain', 'Total Packets'],
-      <?php 
-        $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info WHERE time > DATE_SUB(now(), INTERVAL 1 hour) GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;");
+$exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
             
         if (!$exec) {
           die("Database query failed: " . mysql_error());
-        }
+        } 
+ 
         while($row = mysql_fetch_array($exec)){
           echo "['".$row["dns"]."', ".$row["ip_count"]."],";
         }
-      ?>
-      ]);
 
-      var piechart_options = {title:'Total packets by time (Last Hour)',width:700, height:500};
-      var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
-      piechart.draw(data, piechart_options);
-      }
+
+<html>
+<head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
 </script>
 
 <script type="text/javascript">
