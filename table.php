@@ -23,7 +23,8 @@ $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump
         } 
  
         while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"]."],";
+          echo $row["dns"].", ". $row["ip_count"];
+          echo "<br>";
         }
 
 ?>
