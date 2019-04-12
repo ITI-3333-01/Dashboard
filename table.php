@@ -17,7 +17,17 @@
     die("Database select failed: " . mysql_error());
   }
 ?>
-
+<?php 
+        $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
+            
+        if (!$exec) {
+          die("Database query failed: " . mysql_error());
+        } 
+ 
+        while($row = mysql_fetch_array($exec)){
+          echo "['".$row["dns"]."', ".$row["ip_count"].", ".$row["ratio"]." ],";
+        }
+      ?>
 <html>
   <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
