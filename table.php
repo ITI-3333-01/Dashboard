@@ -16,20 +16,6 @@
   if (!$dbselect) {
     die("Database select failed: " . mysql_error());
   }
-
-
-$exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
-            
-        if (!$exec) {
-          die("Database query failed: " . mysql_error());
-        } 
- $i=1;
-        while($row = mysql_fetch_array($exec)){
-          echo $row[$i].", ".$row["dns"].", ". $row["ip_count"].", ".$row["ratio"];
-          $i=$i+1;
-          echo "<br>";
-        }
-
 ?>
 
 <html>
@@ -43,6 +29,7 @@ $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Domain Name');
         data.addColumn('number', 'Total Packets');
+        data.addColumn('percentage', 'Ratio');
         data.addRows([
         <?php 
         $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
@@ -52,7 +39,7 @@ $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump
         } 
  
         while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"]."],";
+          echo "['".$row["dns"]."', ".$row["ip_count"].", ".$row["ratio"]." ],";
         }
       ?>
         ]);
