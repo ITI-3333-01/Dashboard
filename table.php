@@ -25,7 +25,7 @@
         } 
  
         while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"].", ".$row["ratio"]." ],"; <br>;
+          echo "['".$row["dns"]."', ".$row["ip_count"].", ".$row["ratio"]." ],";
         }
       ?>
 <html>
