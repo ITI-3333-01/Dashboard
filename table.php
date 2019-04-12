@@ -29,7 +29,7 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Domain Name');
         data.addColumn('number', 'Total Packets');
-        data.addColumn('percentage', 'Ratio');
+        data.addColumn('number', 'Ratio (%)');
         data.addRows([
         <?php 
         $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
