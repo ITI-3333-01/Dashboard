@@ -25,7 +25,7 @@
         } 
  
         while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"].", ".$row["ratio"]." ],";
+          echo "['".$row["dns"]."', ".$row["ip_count"].", ".$row["ratio"]." ],"; <br>;
         }
       ?>
 <html>
@@ -39,7 +39,7 @@
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Domain Name');
         data.addColumn('number', 'Total Packets');
-        data.addColumn('number', 'Ratio (%)');
+     //   data.addColumn('number', 'Ratio (%)');
         data.addRows([
         <?php 
         $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
@@ -49,7 +49,7 @@
         } 
  
         while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"].", ".$row["ratio"]." ],";
+          echo "['".$row["dns"]."', ".$row["ip_count"].",],";
         }
       ?>
         ]);
