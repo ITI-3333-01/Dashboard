@@ -16,6 +16,8 @@
   if (!$dbselect) {
     die("Database select failed: " . mysql_error());
   }
+
+
 $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
             
         if (!$exec) {
@@ -30,20 +32,19 @@ $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump
 
 ?>
 
-
-
 <html>
-<head>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
-</script>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['table']});
+      google.charts.setOnLoadCallback(drawTable);
 
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Domain', 'Total Packets'],
-      <?php 
+      function drawTable() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Domain Name');
+        data.addColumn('number', 'Total Packets');
+        data.addRows([
+        <?php 
         $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
             
         if (!$exec) {
@@ -54,12 +55,22 @@ $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump
           echo "['".$row["dns"]."', ".$row["ip_count"]."],";
         }
       ?>
-      ]);
+        ]);
 
-      var piechart_options = {title:'Total packets (All Time Table)',width:700, height:500};
-      var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
-      piechart.draw(data, piechart_options);
+        var table = new google.visualization.Table(document.getElementById('table_div'));
+
+        table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
       }
+    </script>
+  </head>
+  <body>
+    <div id="table_div"></div>
+  </body>
+</html>
+
+<html>
+<head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
 </script>
 </head>
 
