@@ -16,8 +16,6 @@
   if (!$dbselect) {
     die("Database select failed: " . mysql_error());
   }
-?>
-
 $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
             
         if (!$exec) {
@@ -27,6 +25,9 @@ $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump
         while($row = mysql_fetch_array($exec)){
           echo "['".$row["dns"]."', ".$row["ip_count"]."],";
         }
+
+?>
+
 
 
 <html>
