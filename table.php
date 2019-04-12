@@ -21,10 +21,10 @@ $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump
         if (!$exec) {
           die("Database query failed: " . mysql_error());
         } 
- i=1;
+ $i=1;
         while($row = mysql_fetch_array($exec)){
-          echo $row[i].", ".$row["dns"].", ". $row["ip_count"].", ".$row["ratio"];
-          i=i+1;
+          echo $row[$i].", ".$row["dns"].", ". $row["ip_count"].", ".$row["ratio"];
+          $i=$i+1;
           echo "<br>";
         }
 
