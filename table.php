@@ -20,8 +20,8 @@
 
 <html>
   <head>
-    <h1>Tables</h1></center>
-    <p>This table represents the top 6 visited websites and the amount of data that has been sent/received by this website <br><br> </p></center>
+    <h1 style="text-align:center"><br>Tables</h1>
+    <h3 style="text-align:center">This table represents the top 6 visited websites and the amount of data that has been sent/received by this website <br><br> </h2>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['table']});
