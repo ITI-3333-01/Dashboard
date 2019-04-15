@@ -40,7 +40,7 @@
       ?>
       ]);
 
-      var piechart_options = {title:'Total packets by time (Last Hour)',width:700, height:500};
+      var piechart_options = {title:'Total packets by time (Last Hour)',width:400, height:400};
       var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
       piechart.draw(data, piechart_options);
       }
@@ -65,7 +65,7 @@
       ?>
       ]);
 
-      var piechart_options = {title:'Total packets (All Time PC)',width:700, height:500};
+      var piechart_options = {title:'Total packets (All Time PC)',width:400, height:400};
       var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
       piechart.draw(data, piechart_options);
       }
