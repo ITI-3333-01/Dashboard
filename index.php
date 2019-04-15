@@ -20,66 +20,14 @@
 
 <html>
 <head>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
-</script>
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Domain', 'Total Packets'],
-      <?php 
-        $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info WHERE time > DATE_SUB(now(), INTERVAL 1 hour) GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;");
-            
-        if (!$exec) {
-          die("Database query failed: " . mysql_error());
-        }
-        while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"]."],";
-        }
-      ?>
-      ]);
-
-      var piechart_options = {title:'Total packets by time (Last Hour)',width:700, height:500};
-      var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
-      piechart.draw(data, piechart_options);
-      }
-</script>
-
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Domain', 'Total Packets'],
-      <?php 
-        $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
-            
-        if (!$exec) {
-          die("Database query failed: " . mysql_error());
-        } 
- 
-        while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"]."],";
-        }
-      ?>
-      ]);
-
-      var piechart_options = {title:'Total packets (All Time)',width:700, height:500};
-      var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
-      piechart.draw(data, piechart_options);
-      }
-</script>
 </head>
+  <h1 style="text-align:center,font-size:34px, font-color:#532c6d"><br> Big Data, One Byte at a Time: <br>Collecting and Aggregating <br>Live Network Data  
 
-<body>
-<table class="columns">
-  <tr>
-  <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
-  <td><div id="piechart_two_div" style="border: 1px solid #ccc"></div></td>
-  </tr>
-  </table>
-  </body>
+    <h2 style="font-style:bold">Project Abstract</h2>
+    
+    <h3 style:"text-indent:30px">The proliferation of digital data has spawned new technologies and procedures to collect, aggregate, and analyze this data known as Big Data and Business Analytics. This project is intended to more fully understand these trends and model the procedures by collecting real-time network data that is flowing into and out of the Boone Business Building at Trevecca Nazarene University. This project requires the design and architecting of hardware and software to collect and store billions of data points for later retrieval by common industry de facto standard analytics subsystems. Students from information technology, mathematics, and business will benefit from exposure to the technological, analytical, organizational, and communication components of a Big Data and Business Analytics project using real-time data.<br><h/3>
+<h3 style:"text-indent:30px">There are two FLARE projects summarized in the narrative that follows to more clearly represent the holistic objective of the greater goal. However, the details of assessment, outcomes, and budgets are only for project one. Each of the two projects is a three credit hour project with a combined six hours across two years. Although project two is dependent upon successful completion of project one, this foundational project one can stand alone. It is understood that the approval of project one in no way guarantees the approval of project two.</h3>
+</html>
 <?php
   mysql_free_result($result);
   mysql_close($dbconn);
