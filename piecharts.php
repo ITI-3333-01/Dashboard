@@ -20,8 +20,10 @@
 
 <html>
 <head>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
-</script>
+  <h1 style="text-align:center"><br>Pie Charts</h1>
+    <h3 style="text-align:center">This pie charts represents the ratio of the top 6 website visited in the last hour and in the last 7 days <br><br> </h2>
+    
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
@@ -65,7 +67,7 @@
       ?>
       ]);
 
-      var piechart_options = {title:'Total packets (All Time PC)',width:500, height:500};
+      var piechart_options = {title:'Total packets (Last 7 days)',width:500, height:500};
       var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
       piechart.draw(data, piechart_options);
       }
