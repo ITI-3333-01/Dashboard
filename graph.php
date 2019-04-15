@@ -20,65 +20,56 @@
 
 <html>
 <head>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
-</script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
+  google.charts.load('current', {'packages':['line']});
   google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Domain', 'Total Packets'],
-      <?php 
-        $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info WHERE time > DATE_SUB(now(), INTERVAL 1 hour) GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;");
-            
-        if (!$exec) {
-          die("Database query failed: " . mysql_error());
-        }
-        while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"]."],";
-        }
-      ?>
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Day');
+      data.addColumn('number', 'Guardians of the Galaxy');
+      data.addColumn('number', 'The Avengers');
+      data.addColumn('number', 'Transformers: Age of Extinction');
+
+      data.addRows([
+        [1,  37.8, 80.8, 41.8],
+        [2,  30.9, 69.5, 32.4],
+        [3,  25.4,   57, 25.7],
+        [4,  11.7, 18.8, 10.5],
+        [5,  11.9, 17.6, 10.4],
+        [6,   8.8, 13.6,  7.7],
+        [7,   7.6, 12.3,  9.6],
+        [8,  12.3, 29.2, 10.6],
+        [9,  16.9, 42.9, 14.8],
+        [10, 12.8, 30.9, 11.6],
+        [11,  5.3,  7.9,  4.7],
+        [12,  6.6,  8.4,  5.2],
+        [13,  4.8,  6.3,  3.6],
+        [14,  4.2,  6.2,  3.4]
       ]);
 
-      var piechart_options = {title:'Total packets by time (Last Hour)',width:700, height:500};
-      var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
-      piechart.draw(data, piechart_options);
-      }
+      var options = {
+        chart: {
+          title: 'Box Office Earnings in First Two Weeks of Opening',
+          subtitle: 'in millions of dollars (USD)'
+        },
+        width: 900,
+        height: 500
+      };
+
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
 </script>
 
-<script type="text/javascript">
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Domain', 'Total Packets'],
-      <?php 
-        $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;"); 
-            
-        if (!$exec) {
-          die("Database query failed: " . mysql_error());
-        } 
- 
-        while($row = mysql_fetch_array($exec)){
-          echo "['".$row["dns"]."', ".$row["ip_count"]."],";
-        }
-      ?>
-      ]);
 
-      var piechart_options = {title:'Total packets (All Time Graph)',width:700, height:500};
-      var piechart = new google.visualization.PieChart(document.getElementById('piechart_two_div'));
-      piechart.draw(data, piechart_options);
-      }
-</script>
 </head>
 
 <body>
-<table class="columns">
-  <tr>
-  <td><div id="piechart_div" style="border: 1px solid #ccc"></div></td>
-  <td><div id="piechart_two_div" style="border: 1px solid #ccc"></div></td>
-  </tr>
-  </table>
+    <div id="curve_chart" style="width: 900px; height: 500px"></div>
   </body>
 <?php
   mysql_free_result($result);
