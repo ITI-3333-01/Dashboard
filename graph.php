@@ -52,8 +52,8 @@
 
       var options = {
         chart: {
-          title: 'Box Office Earnings in First Two Weeks of Opening',
-          subtitle: 'in millions of dollars (USD)'
+          title: 'Data shared with a website',
+          subtitle: 'in bytes'
         },
         width: 900,
         height: 500
