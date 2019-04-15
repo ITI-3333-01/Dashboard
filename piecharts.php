@@ -44,7 +44,6 @@
       var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
       piechart.draw(data, piechart_options);
       }
-  <br>
 </script>
 
 <script type="text/javascript">
