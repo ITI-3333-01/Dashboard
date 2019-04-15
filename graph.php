@@ -65,7 +65,7 @@
     }
 </script>
 
-
+<div id="linechart_material" style="width: 500px; height: 350px, clear:top"></div>
 </head>
 
 <body>
