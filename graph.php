@@ -69,7 +69,7 @@
 </head>
 
 <body>
-    <div id="linechart_material" style="width: 900px; height: 500px"></div>
+    <div id="linechart_material" style="width: 500px; height: 350px"></div>
   </body>
 <?php
   mysql_free_result($result);
