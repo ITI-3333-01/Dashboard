@@ -29,9 +29,9 @@
 
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'Day');
-      data.addColumn('number', 'Guardians of the Galaxy');
-      data.addColumn('number', 'The Avengers');
-      data.addColumn('number', 'Transformers: Age of Extinction');
+      data.addColumn('number', 'Web1');
+      data.addColumn('number', 'Web2');
+      data.addColumn('number', 'Web3');
 
       data.addRows([
         [1,  37.8, 80.8, 41.8],
@@ -64,7 +64,7 @@
       chart.draw(data, google.charts.Line.convertOptions(options));
     }
 </script>
-
+  <h1>GRAPH<br></h1>
 <div id="linechart_material" style="width: 500px; height: 350px, clear:top"></div>
 </head>
 
