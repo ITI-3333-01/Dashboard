@@ -23,7 +23,6 @@
 <?php
   $page = $_SERVER['PHP_SELF'];
   $sec = "60";
-  include('header.html');
   $servername= "localhost";
   $username="flare";
   $password="Flare-3333";
