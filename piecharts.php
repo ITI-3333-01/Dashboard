@@ -11,7 +11,7 @@
 
 <form action="/piecharts.php" method="get">
   Quantity (between 1 and 5):
-  <input type="number" name="quantity" id="qtyy" min="1" max="5">
+  <input type="number" name="qtyy" id="qtyy" min="1" max="5">
   <input type="submit">
 </form>
 
@@ -107,5 +107,6 @@ echo $_GET['qtyy'];
 <?php
   mysql_free_result($result);
   mysql_close($dbconn);
+  echo $_GET['qtyy'];
   include('footer.html');
 ?>
