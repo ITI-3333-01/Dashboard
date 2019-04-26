@@ -17,6 +17,24 @@
     die("Database select failed: " . mysql_error());
   }
 ?>
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Number Field</h2>
+<p>The <strong>input type="number"</strong> defines a numeric input field.</p>
+<p>You can use the min and max attributes to add numeric restrictions in the input field:</p>
+
+<form action="/action_page.php">
+  Quantity (between 1 and 5):
+  <input type="number" name="quantity" min="1" max="5">
+  <input type="submit">
+</form>
+
+<p><b>Note:</b> type="number" is not supported in IE9 and earlier.</p>
+
+</body>
+</html>
 
 <html>
 <head>
