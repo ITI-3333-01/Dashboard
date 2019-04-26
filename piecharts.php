@@ -37,7 +37,6 @@
   if (!$dbselect) {
     die("Database select failed: " . mysql_error());
   }
-echo $_GET['qtyy'];
 ?>
 
 <html>
@@ -53,6 +52,7 @@ echo $_GET['qtyy'];
     var data = google.visualization.arrayToDataTable([
       ['Domain', 'Total Packets'],
       <?php 
+     echo $_GET['qtyy'];
         $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info WHERE time > DATE_SUB(now(), INTERVAL 1 hour) GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 'qtyy';");
             
         if (!$exec) {
