@@ -9,9 +9,9 @@
 <p>The <strong>input type="number"</strong> defines a numeric input field.</p>
 <p>You can use the min and max attributes to add numeric restrictions in the input field:</p>
 
-<form action="/graph.php" method="get">
+<form action="/piecharts.php" method="get">
   Quantity (between 1 and 5):
-  <input type="number" name="quantity" min="1" max="5">
+  <input type="number" name="quantity" id="qtyy" min="1" max="5">
   <input type="submit">
 </form>
 
@@ -53,7 +53,7 @@
     var data = google.visualization.arrayToDataTable([
       ['Domain', 'Total Packets'],
       <?php 
-        $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info WHERE time > DATE_SUB(now(), INTERVAL 1 hour) GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 6;");
+        $exec = mysql_query("SELECT SUM(ip_count) AS ip_count, dns_root AS dns FROM dump_info WHERE time > DATE_SUB(now(), INTERVAL 1 hour) GROUP BY dns_root ORDER BY SUM(ip_count) DESC LIMIT 'qtyy';");
             
         if (!$exec) {
           die("Database query failed: " . mysql_error());
