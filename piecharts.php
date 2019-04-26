@@ -11,8 +11,8 @@
 
 <form action="/piecharts.php" method="get">
   Quantity (between 1 and 5):
-  <input type="number" name="quantity" id="qty" min="1" max="5">
-  <input type="qtyy">
+  <input type="number" name="quantity" id="qtyy" min="1" max="5">
+  <input type="submit">
 </form>
 
 <p><b>Note:</b> type="number" is not supported in IE9 and earlier.</p>
